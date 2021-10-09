@@ -10,7 +10,7 @@
     "lint": "eslint --fix --cache src/**/*.ts",
     "format": "pretty-quick --staged --verbose ---pattern 'src/**/*.ts'",
     "test": "echo 'Running tests'",
-    "docs": "echo 'Generating documentation'"
+    "docs": "jsdoc -r --verbose -c jsdoc.json"
   },
   "dependencies": {
     "apollo-server": "^3.3.0",

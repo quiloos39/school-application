@@ -24,6 +24,8 @@ jobs:
         run: yarn format
       - name: Creating documentations
         run: yarn docs
+      - name: Adding docs explicitly
+        run: git add -f docs/*
       - name: Saving changes
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
