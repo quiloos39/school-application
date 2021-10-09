@@ -1,0 +1,46 @@
+name: Lint, format, test and version bump
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  lint-format-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetching repository
+        uses: actions/checkout@v2
+      - name: Installing Node.js
+        uses: actions/setup-node@v2
+        with:
+          cache: "yarn"
+      - name: Installing dependencies
+        run: yarn install
+      - name: Running ESLint
+        run: yarn lint
+      - name: Running test
+        run: yarn test
+      - name: Running Prettier
+        run: yarn format
+      - name: Creating documentations
+        run: yarn docs
+      - name: Saving changes
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Saved changes
+
+  version-bump:
+    runs-on: ubuntu-latest
+    if: always()
+    needs: [lint-format-test]
+    steps:
+      - name: Fetching repository
+        uses: actions/checkout@v2
+      - name: Getting latest changes
+        run: git pull
+      - name: Running version bump
+        uses: phips28/gh-action-bump-version@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          skip-tag: true
