@@ -29,7 +29,11 @@ jobs:
       - name: Saving changes
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: Saved changes
+          commit_user_name: Automated Formatter
+          commit_user_email: my-github-actions-bot@example.org
+          commit_author: Automated Formatter
+          commit_message: Applied dark magic to changed files
+
 
   version-bump:
     runs-on: ubuntu-latest
@@ -46,3 +50,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           skip-tag: true
+          major-wording:  'Major'
+          minor-wording:  'Adds,Added,New'
+          patch-wording:  'Patched,Fixed'
+          rc-wording:     'RELEASE,alpha'
