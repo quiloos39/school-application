@@ -1,12 +1,16 @@
 {
-  "name": "graphql-server",
+  "name": "school-application",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
   "private": true,
   "scripts": {
     "start": "ts-node src/index.ts",
-    "dev": "nodemon --watch src/ --exec 'ts-node' src/index.ts"
+    "dev": "nodemon --watch src/ --exec 'ts-node' src/index.ts",
+    "lint": "eslint --fix --cache src/**/*.ts",
+    "format": "pretty-quick --staged --verbose ---pattern 'src/**/*.ts'",
+    "test": "echo 'Running tests'",
+    "docs": "echo 'Generating documentation'"
   },
   "dependencies": {
     "apollo-server": "^3.3.0",
@@ -15,10 +19,14 @@
   },
   "devDependencies": {
     "@types/node": "^16.10.3",
+    "@typescript-eslint/eslint-plugin": "^4.33.0",
+    "@typescript-eslint/parser": "^4.33.0",
+    "better-docs": "^2.3.2",
     "eslint": "^7.32.0",
     "jsdoc": "^3.6.7",
     "nodemon": "^2.0.13",
     "prettier": "^2.4.1",
+    "pretty-quick": "^3.1.1",
     "ts-node": "^10.2.1",
     "tslib": "^2.3.1",
     "typescript": "^4.4.3"

@@ -1,4 +1,4 @@
-const { ApolloServer } = require("apollo-server");
+import { ApolloServer } from "apollo-server";
 import Class from "./resolver/ClassResolver";
 import Query from "./resolver/QueryResolver";
 import Student from "./resolver/StudentResolver";
